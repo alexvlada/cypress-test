@@ -1,6 +1,6 @@
 ### Selenium test applicaton examples:
 
-1. CT Shop eCommerce (ctShopTest.js)
+1. CT Shop eCommerce (ctShop)
 - Creating user account
 - Successful login
 - Login with wrong credentials
@@ -11,7 +11,7 @@
 - Putting more than one product to basket
 - Search product (different criterias) 
   
-2. API (apiTesting.js)
+2. API (apiTesting)
 - Get Api server status
 - Get all tools
 - Get single tool
