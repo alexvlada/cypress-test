@@ -240,10 +240,10 @@ context('CT shop - test suit', () => {
     onBasketPage.saveAndContinue() 
   })
 
-  it('Fizicko lice - Products - Search - 1 matching', () => { 
+  it.only('Fizicko lice - Products - Search - 1 matching', () => { 
     
-    const searchProductCriteria = '82RN00DWYA' 
-    const searchProductName = 'Lenovo IdeaPad 3 15ABA7 (82RN00DWYA) laptop 15.6" FHD AMD Ryzen 7 5825U 8GB 512GB SSD Radeon Graphics sivi'
+    const searchProductCriteria = '8C9R4EA/WIN11' 
+    const searchProductName = 'HP 15s-eq2390nia (8C9R4EA/WIN11) laptop 15.6" FHD AMD Ryzen 7 5700U 16GB 512GB SSD Radeon Graphics Win11 srebrni'
     
     cy.visit(baseUrl)
     //cy.loginCtShopFl('F')
