@@ -8,8 +8,7 @@ const checkboxEl = "[type='checkbox']";
 const laptopTabletMainMenu = 'laptopovi-tableti';
 const laptopRacunariSubMenu = 'a[href*="laptop-racunari"]';
 const laptopovi = 'a[href*="laptopovi"]';
-//const laptopName = 'Lenovo IdeaPad 3 15ABA7 (82RN00DWYA) laptop 15.6" FHD AMD Ryzen 7 5825U 8GB 512GB SSD Radeon Graphics sivi';
-const laptopName = 'Lenovo Yoga 7 14ARP8 (82YM005HYA) 2u1 laptop 14" 2.8K OLED touch AMD Ryzen 7 7735U 16GB 1TB SSD Radeon 680M Win11 Pro sivi';
+const laptopName = 'Lenovo ThinkPad Z13 G1 (21D20016YA) laptop 13.3" 2.8K OLED touch AMD Ryzen 7 6860Z 32GB 1TB SSD Radeon 680M Win11 Pro crno bronzani';
 
 const sporeti = 'a[href*="sporeti"]';
 const elektricniSporeti = 'a[href*="elektricni-sporeti"]';
