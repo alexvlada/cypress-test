@@ -13,7 +13,8 @@ public class LaptopPage extends BaseTest {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//a[contains(text(), '82YM005HYA')]")
+    //@FindBy(xpath = "//a[contains(text(), '82YM005HYA')]")
+    @FindBy(css = "img[alt='Lenovo Yoga 7 14ARP8 (82YM005HYA) 2u1 laptop 14\" 2.8K OLED touch AMD Ryzen 7 7735U 16GB 1TB SSD Radeon 680M Win11 Pro sivi']")
     WebElement laptop;
 
     @FindBy(css = "div[class='product-name'] h1")

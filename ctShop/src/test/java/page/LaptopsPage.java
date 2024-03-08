@@ -2,6 +2,7 @@ package page;
 
 import base.BaseTest;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -15,8 +16,11 @@ public class LaptopsPage extends BaseTest {
     }
     @FindBy(xpath = "//label[text()='Lenovo']")
     WebElement lenovoFilter;
-
+/*
     @FindBy(xpath = "//label[text()='AMD RYZEN 7']")
+    WebElement processorFilter;
+*/
+    @FindBy(id = "filter_data_filter_3547")
     WebElement processorFilter;
 
     public void lenovoCheckboxClick() {
@@ -25,8 +29,12 @@ public class LaptopsPage extends BaseTest {
     }
 
     public void processorCheckboxClick() {
+        /*
         wdWait.until(ExpectedConditions.elementToBeClickable(processorFilter));
         processorFilter.click();
+         */
+        JavascriptExecutor executor = (JavascriptExecutor)driver;
+        executor.executeScript("arguments[0].click();", processorFilter);
     }
 
 }

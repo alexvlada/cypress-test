@@ -148,6 +148,8 @@ public class CtShopTest extends BaseTest {
         assertTrue(laptopPage.newPriceIsDisplayed());
         oldPrice = Double.parseDouble(laptopPage.oldPriceGetText());
         newPrice = Double.parseDouble(laptopPage.newPriceGetText());
+        System.out.println("Old price: " +oldPrice);
+        System.out.println("New price: " +newPrice);
         assertTrue("New price is less than old price", newPrice < oldPrice);
         //assertEquals("66.666",laptopPage.oldPriceGetText());
         //assertEquals("59.999",laptopPage.newPriceGetText());
@@ -329,11 +331,11 @@ public class CtShopTest extends BaseTest {
         laptopsPage.lenovoCheckboxClick();
         laptopsPage.processorCheckboxClick();
         laptopPage.laptopClick();
+        assertTrue(laptopPage.productNameIsDisplayed());
         assertTrue(commonPage.basketNumberOfItemsIsDisplayed());
         assertEquals(0,Integer.parseInt(commonPage.basketNumberOfItemsGetText()));
         laptopPage.addToBasketButtonClick();
         assertEquals(1,Integer.parseInt(commonPage.basketNumberOfItemsGetText()));
-
         addToBasketPopupPage.continueShoppingButtonClick();
         ctShopHomePage.mainMenuDropDownHover();
         ctShopHomePage.getCategoryHover("belaTehnika");
@@ -346,7 +348,6 @@ public class CtShopTest extends BaseTest {
         addToBasketPopupPage.goToBasketButtonClick();
         basketPage.confirmButtonClick();
         assertEquals(2,Integer.parseInt(commonPage.basketNumberOfItemsGetText()));
-
     }
 
 }

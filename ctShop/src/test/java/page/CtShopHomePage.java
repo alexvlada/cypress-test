@@ -3,9 +3,13 @@ package page;
 import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.JavascriptExecutor;
+
+import java.util.concurrent.Executor;
 
 public class CtShopHomePage extends BaseTest {
     public CtShopHomePage() {
@@ -32,14 +36,25 @@ public class CtShopHomePage extends BaseTest {
     @FindBy(linkText = "Laptop računari")
     WebElement getSubCategory;
 
-    @FindBy(linkText = "Šporeti")
+    //@FindBy(linkText = "Šporeti")
+    @FindBy(css = "a[href='/sporeti']")
     WebElement getSubCategorySporeti;
 
-    @FindBy(linkText = "Laptopovi")
+    //@FindBy(linkText = "Laptopovi")
+    @FindBy(css = "img[alt='Laptopovi']")
     WebElement getProductGroup;
 
-    @FindBy(linkText = "Električni šporeti")
+    @FindBy(css = "img[alt='Električni šporeti']")
     WebElement getProductGroupElektricniSporeti;
+
+    @FindBy(id = "mCSB_5_dragger_vertical")
+    WebElement processorSrollBar;
+
+    @FindBy(id = "filter_data_filter_3547")
+    WebElement processorFilter;
+
+    @FindBy(css = "div[class='mCSB_draggerContainer']")
+    WebElement processorFilterScrollDown;
 
 
 
@@ -81,11 +96,13 @@ public class CtShopHomePage extends BaseTest {
     public void getSubCategoryClick(String subCategory) {
         if (subCategory == "laptopRacunari")
             {
-                wdWait.until(ExpectedConditions.elementToBeClickable(getSubCategory)).click();
+                wdWait.until(ExpectedConditions.elementToBeClickable(getSubCategory));
+                getSubCategory.click();
             }
         else if (subCategory == "sporeti")
             {
-                wdWait.until(ExpectedConditions.elementToBeClickable(getSubCategorySporeti)).click();
+                wdWait.until(ExpectedConditions.elementToBeClickable(getSubCategorySporeti));
+                getSubCategorySporeti.click();
             }
     }
 
