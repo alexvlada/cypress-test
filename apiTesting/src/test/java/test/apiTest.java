@@ -1,20 +1,14 @@
 package test;
 
-import base.BaseTest;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import io.restassured.response.ValidatableResponse;
-import io.restassured.response.ValidatableResponseLogSpec;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runner.OrderWith;
 import org.junit.runners.MethodSorters;
-import org.openqa.selenium.Keys;
 
 import java.util.Random;
 
@@ -23,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class apiTest extends BaseTest {
+public class apiTest {
 
     String RestAssuredURL = "https://simple-tool-rental-api.glitch.me";
     String apiServerStatusPath = "/status";
@@ -32,7 +26,7 @@ public class apiTest extends BaseTest {
     String ordersPath = "/orders";
     String orderId = "IxwX33ud-lQ5OJ7JhoxUH";
     String apiClientPath = "/api-clients";
-    String authToken = "0eb22aaec2b85268a92445e0ed10c4ad08d976a424c37db185cf7cd1641dd1a5";
+    String authToken = "081c8ad825c7386dfd6ca45153d59e7ddcfd264c8a78d5ab8e234dcc92fa1022";
     String newOrderId;
     String newAuthToken;
 
