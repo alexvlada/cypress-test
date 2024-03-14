@@ -72,7 +72,7 @@ public class CtShopTest extends BaseTest {
     }
 
     @Test
-    public void _01_successfulRegistrationTest() {
+    public void _01_successfulRegistrationTest() throws InterruptedException {
 
         ctShopHomePage.otvoriNalogButtonClick();
         ctShopRegistrationPage.pravnoLiceSelectListCheckFalse();
@@ -83,7 +83,6 @@ public class CtShopTest extends BaseTest {
         ctShopRegistrationPage.confirmPasswordInputFieldSendKeys(password);
         ctShopRegistrationPage.isSubscribedCheckboxUncheck();
         ctShopRegistrationPage.rememberMeCheckboxUncheck();
-        ctShopRegistrationPage.confirmButtonClick();
         ctShopRegistrationPage.sendButtonClick();
         //ctShopLoginPage.switchToNewTab(1);
         assertTrue(ctShopLoginPage.successfulRegistrationMessageIsDisplayed());
@@ -112,7 +111,7 @@ public class CtShopTest extends BaseTest {
     }
 
     @Test
-    public void _02_loginWrongCredentials() {
+    public void _02_loginWrongCredentials() throws InterruptedException {
 
         ctShopHomePage.prijaviSeButtonClick();
         ctShopLoginPage.emailOrUserNameInputFieldSendKeys(CommonPage.GlobalVariables.username);
@@ -124,11 +123,10 @@ public class CtShopTest extends BaseTest {
     }
 
     @Test
-    public void _03_getToProductPriceAndRatingStatus() {
+    public void _03_getToProductPriceAndRatingStatus() throws InterruptedException {
         Double oldPrice = null;
         Double newPrice = null;
         Integer raitingNumber = null;
-        ctShopRegistrationPage.confirmButtonClick();
         ctShopHomePage.prijaviSeButtonClick();
         ctShopLoginPage.emailOrUserNameInputFieldSendKeys(CommonPage.GlobalVariables.username);
         ctShopLoginPage.passwordInputFieldSendKeys(CommonPage.GlobalVariables.password);
@@ -161,8 +159,7 @@ public class CtShopTest extends BaseTest {
     }
 
     @Test
-    public void _04_addAndRemoveFromBasket() {
-        ctShopRegistrationPage.confirmButtonClick();
+    public void _04_addAndRemoveFromBasket() throws InterruptedException {
         ctShopHomePage.prijaviSeButtonClick();
         ctShopLoginPage.emailOrUserNameInputFieldSendKeys(CommonPage.GlobalVariables.username);
         ctShopLoginPage.passwordInputFieldSendKeys(CommonPage.GlobalVariables.password);
@@ -204,8 +201,7 @@ public class CtShopTest extends BaseTest {
     }
 
     @Test
-    public void _05_addToBasketIncreaseDecreaseAmountByArrow() {
-        ctShopRegistrationPage.confirmButtonClick();
+    public void _05_addToBasketIncreaseDecreaseAmountByArrow() throws InterruptedException {
         ctShopHomePage.prijaviSeButtonClick();
         ctShopLoginPage.emailOrUserNameInputFieldSendKeys(CommonPage.GlobalVariables.username);
         ctShopLoginPage.passwordInputFieldSendKeys(CommonPage.GlobalVariables.password);
@@ -238,8 +234,7 @@ public class CtShopTest extends BaseTest {
     }
 
     @Test
-    public void _06_addToBasketChangeAmountByInputField() {
-        ctShopRegistrationPage.confirmButtonClick();
+    public void _06_addToBasketChangeAmountByInputField() throws InterruptedException {
         ctShopHomePage.prijaviSeButtonClick();
         ctShopLoginPage.emailOrUserNameInputFieldSendKeys(CommonPage.GlobalVariables.username);
         ctShopLoginPage.passwordInputFieldSendKeys(CommonPage.GlobalVariables.password);
@@ -270,9 +265,8 @@ public class CtShopTest extends BaseTest {
     }
 
     @Test
-    public void _07_productSearchOneMatchingResult() {
+    public void _07_productSearchOneMatchingResult() throws InterruptedException {
         String searchCriteria = "8C9R4EA/WIN11";
-        ctShopRegistrationPage.confirmButtonClick();
         ctShopHomePage.prijaviSeButtonClick();
         ctShopLoginPage.emailOrUserNameInputFieldSendKeys(CommonPage.GlobalVariables.username);
         ctShopLoginPage.passwordInputFieldSendKeys(CommonPage.GlobalVariables.password);
@@ -285,9 +279,8 @@ public class CtShopTest extends BaseTest {
     }
 
     @Test
-    public void _08_productSearchMoreMatchingResults() {
+    public void _08_productSearchMoreMatchingResults() throws InterruptedException {
         String searchCriteria = "Lenovo IdeaPad slim 3";
-        ctShopRegistrationPage.confirmButtonClick();
         ctShopHomePage.prijaviSeButtonClick();
         ctShopLoginPage.emailOrUserNameInputFieldSendKeys(CommonPage.GlobalVariables.username);
         ctShopLoginPage.passwordInputFieldSendKeys(CommonPage.GlobalVariables.password);
@@ -300,10 +293,9 @@ public class CtShopTest extends BaseTest {
     }
 
     @Test
-    public void _09_productSearchNoMatching() {
+    public void _09_productSearchNoMatching() throws InterruptedException {
         String searchCriteria = "qweqewrerytugyugjhgtyufd";
         String noResultsMessage = "Nažalost nismo pronašli ništa što bi se podudarilo sa "+'"'+searchCriteria+'"';
-        ctShopRegistrationPage.confirmButtonClick();
         ctShopHomePage.prijaviSeButtonClick();
         ctShopLoginPage.emailOrUserNameInputFieldSendKeys(CommonPage.GlobalVariables.username);
         ctShopLoginPage.passwordInputFieldSendKeys(CommonPage.GlobalVariables.password);
@@ -316,8 +308,7 @@ public class CtShopTest extends BaseTest {
     }
 
     @Test
-    public void _10_addMoreProductsToBasket() {
-        ctShopRegistrationPage.confirmButtonClick();
+    public void _10_addMoreProductsToBasket() throws InterruptedException {
         ctShopHomePage.prijaviSeButtonClick();
         ctShopLoginPage.emailOrUserNameInputFieldSendKeys(CommonPage.GlobalVariables.username);
         ctShopLoginPage.passwordInputFieldSendKeys(CommonPage.GlobalVariables.password);

@@ -29,8 +29,7 @@ public class CtShopRegistrationPage extends BaseTest {
     WebElement passwordInputField;
     @FindBy(id = "confirmation")
     WebElement confirmPasswordInputField;
-    @FindBy(xpath = "//button[text() = 'Prihvatam']")
-    WebElement confirmButton;
+
     @FindBy(xpath = "//span[text() = 'Pošalji']")
     WebElement sendButton;
 
@@ -91,11 +90,6 @@ public class CtShopRegistrationPage extends BaseTest {
     public void rememberMeCheckboxUncheck() {
         if(checkbox1.isSelected())
             checkbox1.click();
-    }
-
-    public void confirmButtonClick() {
-        wdWait.until(ExpectedConditions.elementToBeClickable(confirmButton)).click();
-        //wdWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text() = 'Prihvatam']"))).click();
     }
 
     public void sendButtonClick() {

@@ -27,6 +27,6 @@ public class BaseTest {
     @After
     public void tearDown(){
       // TODO odkomentarisati kada testovi budu napisani
-        driver.quit();
+      driver.quit();
     }
 }
