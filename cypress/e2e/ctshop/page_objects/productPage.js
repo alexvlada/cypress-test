@@ -1,4 +1,6 @@
 
+const oldPrice = 'span[class="price-after-discount"]'  //'span[class=" strikethrough  old-online-price"]' 
+const newPrice = 'span[class="new-price"]' //'span[class="price new-online-price"]'  
 
 export class ProductPage {
 
@@ -7,11 +9,11 @@ export class ProductPage {
     }
 
     getOldPriceVisible() {
-        cy.get('span[class=" strikethrough  old-online-price"]').should('be.visible')
+        cy.get(oldPrice).should('be.visible')
     }
 
     getNewPriceVisible() {
-        cy.get('span[class="price new-online-price"]').should('be.visible')
+        cy.get(newPrice).should('be.visible')
     }
     
     getProductDetails() {
@@ -19,11 +21,11 @@ export class ProductPage {
     }
 
     getPriceComparationStatus() {
-    cy.get('span[class=" strikethrough  old-online-price"]').then(($el) => {
+    cy.get(oldPrice).then(($el) => {
         const oldPrice = parseInt($el.text());
         cy.log(oldPrice)
     
-        cy.get('span[class="price new-online-price"]').then(($el) => {
+        cy.get(newPrice).then(($el) => {
               const newPrice = parseInt($el.text());
               cy.log(newPrice)
               cy.wrap(oldPrice).should('be.greaterThan',newPrice)

@@ -8,7 +8,7 @@ const checkboxEl = "[type='checkbox']";
 const laptopTabletMainMenu = 'laptopovi-tableti';
 const laptopRacunariSubMenu = 'a[href*="laptop-racunari"]';
 const laptopovi = 'a[href*="laptopovi"]';
-const laptopName = 'Lenovo ThinkPad Z13 G1 (21D20016YA) laptop 13.3" 2.8K OLED touch AMD Ryzen 7 6860Z 32GB 1TB SSD Radeon 680M Win11 Pro crno bronzani';
+const laptopName = 'Lenovo Yoga 6 13ABR8 (83B2006EYA) 2u1 laptop 13.3" WUXGA touch AMD Ryzen 7 7730U 16GB 512GB SSD Radeon Graphics tamni teal';
 
 const sporeti = 'a[href*="sporeti"]';
 const elektricniSporeti = 'a[href*="elektricni-sporeti"]';

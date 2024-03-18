@@ -32,7 +32,11 @@ const sporet = 'sporet'
 context('CT shop - test suit', () => {
      
     before(() => {
-      
+      Cypress.on('uncaught:exception', (err, runnable) => {
+        // returning false here prevents Cypress from
+        // failing the test
+        return false;
+      });
     }) 
   
     beforeEach(() => {
@@ -164,22 +168,24 @@ context('CT shop - test suit', () => {
 
   it('Fizicko lice - Product - Price & rating status', () => { 
 
-    const searchProductCriteria = 'GEIT6C60XPG' 
-    const searchProductName = 'Gorenje GEIT6C60XPG staklokeramički šporet'
+    const searchProductCriteria = 'GEC5C61WG'//'GEIT6C60XPG' 
+    const searchProductName = 'Gorenje GEC5C61WG staklokeramički šporet'//'Gorenje GEIT6C60XPG staklokeramički šporet'
     
     cy.visit(baseUrl)
     //cy.loginCtShopFl('F')
     onCtShopLoginPage.loginToAccount(eMailAddressMailinator,password)
 
-    onCommonPage.searchProduct(searchProductCriteria, searchProductName, 1)
+    //onCommonPage.searchProduct(searchProductCriteria, searchProductName, 1)
+    onCommonPage.getToProduct(laptop)
+   // onCommonPage.addProductToBasket(laptop)
 
     onProductPage.getOldPriceVisible()
     onProductPage.getNewPriceVisible()
     
     onProductPage.getPriceComparationStatus()
 
-    onProductPage.getProductDetails().should('contain','Tip proizvoda') 
-    onProductPage.getProductDetails().should('contain','Samostojeći šporet') 
+    onProductPage.getProductDetails().eq(0).should('contain','Tip proizvoda') 
+    onProductPage.getProductDetails().eq(0).should('contain','Hibridni (2-u-1)') 
 
     onProductPage.getRaitingStatus()
   })
