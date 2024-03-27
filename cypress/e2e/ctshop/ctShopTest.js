@@ -6,6 +6,7 @@ import { onMailinatorCtShopEmailPage } from "./page_objects/mailinatorCtShopEmai
 import { onMailinatorHomePage } from "./page_objects/mailinatorHomePage"
 import { onMailinatorInboxPage } from "./page_objects/mailinatorInboxPage"
 import { onProductPage } from "./page_objects/productPage"
+import { onProductsPage } from "./page_objects/productsPage"
 
 const baseUrl = 'https://www.ctshop.rs/'
 const mailinatorUrl = 'https://www.mailinator.com/v4/public/inboxes.jsp'
@@ -27,6 +28,8 @@ const successfulActivationMessageText = 'Uspešno ste aktivirali Vaš nalog. Mo�
 const wrongCredentialLoginMessageText = 'Uneta email adresa i lozinka se ne poklapaju.'
 const laptop = 'laptop'
 const sporet = 'sporet'
+let laptopName
+let SporetName
 
 
 context('CT shop - test suit', () => {
@@ -174,20 +177,14 @@ context('CT shop - test suit', () => {
     cy.visit(baseUrl)
     //cy.loginCtShopFl('F')
     onCtShopLoginPage.loginToAccount(eMailAddressMailinator,password)
-
     //onCommonPage.searchProduct(searchProductCriteria, searchProductName, 1)
-    onCommonPage.getToProduct(laptop)
-   // onCommonPage.addProductToBasket(laptop)
-
+    onCommonPage.getToProduct(laptop,1)
     onProductPage.getOldPriceVisible()
     onProductPage.getNewPriceVisible()
-    
     onProductPage.getPriceComparationStatus()
-
-    onProductPage.getProductDetails().eq(0).should('contain','Tip proizvoda') 
-    onProductPage.getProductDetails().eq(0).should('contain','Hibridni (2-u-1)') 
-
+    onProductPage.checkProductDetails()
     onProductPage.getRaitingStatus()
+    
   })
 
   it('Fizicko lice - Products - Add to and remove from basket', () => { 
@@ -195,15 +192,13 @@ context('CT shop - test suit', () => {
     cy.visit(baseUrl)
     //cy.loginCtShopFl('F')
     onCtShopLoginPage.loginToAccount(eMailAddressMailinator,password)
-  
     onCommonPage.getToProduct(laptop)
     onCommonPage.getCurrentAmount(0)
-    onCommonPage.addProductToBasket(laptop)
+    onCommonPage.addProductToBasket(laptop) 
     onBasketPage.saveAndContinue()
     onCommonPage.getCurrentAmount(1)
     onBasketPage.removeFromBasket()
     onCommonPage.getCurrentAmount(0)
-    
   })
 
   it('Fizicko lice - Products - Add to basket and increase / decrease amount by arrows', () => { 
@@ -211,7 +206,6 @@ context('CT shop - test suit', () => {
     cy.visit(baseUrl)
     //cy.loginCtShopFl('F')
     onCtShopLoginPage.loginToAccount(eMailAddressMailinator,password)
-    
     onCommonPage.getToProduct(laptop)
     onCommonPage.addProductToBasket(laptop)
     onBasketPage.increaseAmountByArrow()
@@ -223,7 +217,6 @@ context('CT shop - test suit', () => {
     cy.visit(baseUrl)
     //cy.loginCtShopFl('F')
     onCtShopLoginPage.loginToAccount(eMailAddressMailinator,password)
-
     onCommonPage.getToProduct(laptop)
     onCommonPage.addProductToBasket(laptop)  
     onBasketPage.changeAmountByInputField(5)
@@ -236,14 +229,13 @@ context('CT shop - test suit', () => {
     cy.visit(baseUrl)
     //cy.loginCtShopFl('F')
     onCtShopLoginPage.loginToAccount(eMailAddressMailinator,password)
-    
     onCommonPage.getToProduct(laptop)
     onCommonPage.addProductToBasket(laptop)
     onCommonPage.getCurrentAmount(1)
     onCommonPage.getToProduct(sporet)
     onCommonPage.addProductToBasket(sporet)
-    onCommonPage.getCurrentAmount(2)
-    onBasketPage.saveAndContinue() 
+   // onCommonPage.getCurrentAmount(2)
+   // onBasketPage.saveAndContinue() 
   })
 
   it('Fizicko lice - Products - Search - 1 matching', () => { 

@@ -8,7 +8,7 @@ const checkboxEl = "[type='checkbox']";
 const laptopTabletMainMenu = 'laptopovi-tableti';
 const laptopRacunariSubMenu = 'a[href*="laptop-racunari"]';
 const laptopovi = 'a[href*="laptopovi"]';
-const laptopName = 'Lenovo Yoga 6 13ABR8 (83B2006EYA) 2u1 laptop 13.3" WUXGA touch AMD Ryzen 7 7730U 16GB 512GB SSD Radeon Graphics tamni teal';
+const laptopName = 'Lenovo Legion 5 Pro 16ARX8 (82WM00D0RM) gejmerski laptop 16" WQXGA AMD Ryzen 7 7745HX 32GB 1TB SSD GeForce RTX4060 sivi';
 
 const sporeti = 'a[href*="sporeti"]';
 const elektricniSporeti = 'a[href*="elektricni-sporeti"]';
@@ -22,6 +22,15 @@ export class CommonPage {
         return Cypress.env('randomNumber')
       
     }
+
+    getBaseUrl() {
+        return ('https://www.ctshop.rs/')
+    }
+
+    getGlobalLaptopName() {
+       return (Cypress.myGlobalLaptopName)
+    }
+
 
     getRegisterLink() {
         return cy.contains('Otvori nalog')   
@@ -65,7 +74,10 @@ export class CommonPage {
     } 
 
 
-    getToProduct(product) {
+    getToProduct(product, option) {
+
+        // option 1 - High Ranking Product
+        // option 2 - 1st listed
 
         let mainManu = ''
         let subMenu = ''
@@ -107,12 +119,19 @@ export class CommonPage {
         cy.get(checkboxEl).check(checkBox1, {force: true})
         cy.get(checkboxEl).check(checkBox2, {force: true})
 
-        onProductsPage.getDisplayedProducts().eq(0).then(($el) => {    
-          const href = $el.attr('href');
-          cy.log(href)
-          cy.visit(baseUrl+href)
-        })  
-           
+        if (option == 1) 
+          {
+            onProductsPage.getHighRankingProduct()
+          }
+        else
+          {
+            onProductsPage.getDisplayedProducts().eq(0).then(($el) => {    
+            const href = $el.attr('href');
+            cy.log(href)
+            cy.visit(baseUrl+href)
+            })
+          }          
+          
     }
 
     getCurrentAmount(expectedAmount) {
@@ -131,13 +150,13 @@ export class CommonPage {
         onBasketPage.getBasketTitle()
         onBasketPage.basketTabsStatuses('korpa')
         
-        if (product == 'sporet')
-        {
-            onBasketPage.getProductName().should('contain',sporetName) 
-        }
-        else if (product == 'laptop')
+        if (product == 'laptop')
         {
             onBasketPage.getProductName().should('contain',laptopName) 
+        }
+        else if (product == 'sporet')
+        {
+            onBasketPage.getProductName(1).should('contain',sporetName) 
         }
 
     }

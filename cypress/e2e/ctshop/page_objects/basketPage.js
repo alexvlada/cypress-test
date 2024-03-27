@@ -85,9 +85,22 @@ export class BasketPage {
         cy.get('div[class="clearfix"]').should('contain','Korpa')
     }
 
-    getProductName() {
-        return cy.get('a[class="name-of-product"]')
+    getProductName(rowNumber) {
+
+        if (rowNumber == null) 
+            {
+                return cy.get('a[class="name-of-product"]').eq(0)
+            }
+        else
+            {
+                return cy.get('a[class="name-of-product"]').eq(rowNumber)
+            }
+
+        
     }
+
+
+
     
 
 
