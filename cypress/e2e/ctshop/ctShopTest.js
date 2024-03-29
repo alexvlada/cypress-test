@@ -234,8 +234,8 @@ context('CT shop - test suit', () => {
     onCommonPage.getCurrentAmount(1)
     onCommonPage.getToProduct(sporet)
     onCommonPage.addProductToBasket(sporet)
-   // onCommonPage.getCurrentAmount(2)
-   // onBasketPage.saveAndContinue() 
+    onCommonPage.getCurrentAmount(2)
+    onBasketPage.saveAndContinue() 
   })
 
   it('Fizicko lice - Products - Search - 1 matching', () => { 
