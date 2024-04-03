@@ -31,7 +31,6 @@ const sporet = 'sporet'
 let laptopName
 let SporetName
 
-
 context('CT shop - test suit', () => {
      
     before(() => {
@@ -240,8 +239,8 @@ context('CT shop - test suit', () => {
 
   it('Fizicko lice - Products - Search - 1 matching', () => { 
     
-    const searchProductCriteria = '8C9R4EA/WIN11' 
-    const searchProductName = 'HP 15s-eq2390nia (8C9R4EA/WIN11) laptop 15.6" FHD AMD Ryzen 7 5700U 16GB 512GB SSD Radeon Graphics Win11 srebrni'
+    const searchProductCriteria = 'HP 15s-eq2390nia' 
+    const searchProductName = 'HP 15s-eq2389nia (7H315EA/16) laptop 15.6" FHD AMD Ryzen 5 5500U 16GB 512GB SSD Radeon Graphics crni'
     
     cy.visit(baseUrl)
     //cy.loginCtShopFl('F')
@@ -268,5 +267,31 @@ context('CT shop - test suit', () => {
     onCtShopLoginPage.loginToAccount(eMailAddressMailinator,password)
     onCommonPage.searchProduct(searchProductCriteria, searchProductName, 0)
   })
+
+  it('Performance test 01', () => { 
+    cy.visit(baseUrl)
+    .window()
+    .its('performance')
+    .then(performance => {
+      const performanceEntries = performance.getEntriesByType('navigation');
+      const [pageNav] = performanceEntries;
+      cy.log('Page load time:', pageNav.duration);
+    // You can assert against pageNav.duration if you have a performance budget.
+  });
+  })
+
+  it('Performance test 02', () => { 
+    cy.document().then((doc) => {
+      const resources = doc.defaultView.performance.getEntriesByType("resource");
+      resources.forEach((resource) => {
+        console.log(resource.name, resource.duration);
+        // Optionally, assert on specific resource load times
+      });
+    });
+  })
+
+  
+
+
 
 })
