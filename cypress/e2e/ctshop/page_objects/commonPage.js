@@ -33,15 +33,18 @@ export class CommonPage {
 
 
     getRegisterLink() {
-        return cy.contains('Otvori nalog')   
+        return cy.contains('Registaracija')  
     }
 
     getLoginLink() {
-        return cy.contains('Prijavi se')   
+        return cy.contains('Prijava')   
     }
 
     searchProduct(searchCriteria,searchResult, expectedNumberOfResults) {
-        cy.get('#search-input-header').type(searchCriteria).type('{enter}')
+     
+        cy.get('#search-input-header').clear({ force: true }).type(searchCriteria, { force: true })
+      //  cy.get('#search-input-header').clear().type(searchCriteria, { force: true }).type('{enter}')
+        cy.get("#search-submit-header").click({ force: true })
         cy.wait(1000)    
         
         if (expectedNumberOfResults == 0)
@@ -142,23 +145,36 @@ export class CommonPage {
             })            
     }
     
-    addProductToBasket(product) {
-        onProductPage.getAddToBusketButton().click()
+    addProductToBasket(product, continueShopping) {
+       
         cy.wait(1000)
-        onAddToBasketPopupPage.getGoToBasketButton().click({force: true})
-        cy.wait(1000)
-        onBasketPage.getBasketTitle()
-        onBasketPage.basketTabsStatuses('korpa')
+        onProductPage.getAddToBusketButton().click()  
         
-        if (product == 'laptop')
-        {
-            onBasketPage.getProductName().should('contain',laptopName) 
-        }
-        else if (product == 'sporet')
-        {
-            onBasketPage.getProductName(1).should('contain',sporetName) 
-        }
+        if (continueShopping == 1)
+          {
+            onAddToBasketPopupPage.getContinueShopingButton().click()
+          } 
+        else
+          {  
+            onAddToBasketPopupPage.getGoToBasketButton().click({force: true})
+            cy.wait(1000)
+            onBasketPage.getBasketTitle()
+            onBasketPage.basketTabsStatuses('korpa')
+            
+            if (product == 'laptop')
+            {
+                onBasketPage.getProductName().should('contain',laptopName) 
+            }
+            else if (product == 'sporet')
+            {
+                onBasketPage.getProductName(1).should('contain',sporetName) 
+            }
+          }
 
+    }
+
+    getBusketButton() {
+        return cy.get('img[alt="percent"]')
     }
 
 }

@@ -193,11 +193,13 @@ context('CT shop - test suit', () => {
     onCtShopLoginPage.loginToAccount(eMailAddressMailinator,password)
     onCommonPage.getToProduct(laptop)
     onCommonPage.getCurrentAmount(0)
-    onCommonPage.addProductToBasket(laptop) 
-    onBasketPage.saveAndContinue()
+    onCommonPage.addProductToBasket(laptop,0) 
     onCommonPage.getCurrentAmount(1)
-    onBasketPage.removeFromBasket()
+    //onCommonPage.getBusketButton().eq(1).click()
+    onBasketPage.saveAndContinue()
+    onBasketPage.removeFromBasketNoValidation()
     onCommonPage.getCurrentAmount(0)
+
   })
 
   it('Fizicko lice - Products - Add to basket and increase / decrease amount by arrows', () => { 
@@ -229,18 +231,19 @@ context('CT shop - test suit', () => {
     //cy.loginCtShopFl('F')
     onCtShopLoginPage.loginToAccount(eMailAddressMailinator,password)
     onCommonPage.getToProduct(laptop)
-    onCommonPage.addProductToBasket(laptop)
+    onCommonPage.addProductToBasket(laptop,1)
     onCommonPage.getCurrentAmount(1)
     onCommonPage.getToProduct(sporet)
-    onCommonPage.addProductToBasket(sporet)
+    onCommonPage.addProductToBasket(sporet,1)
     onCommonPage.getCurrentAmount(2)
-    onBasketPage.saveAndContinue() 
+    onCommonPage.getBusketButton().eq(1).click()
+    //onBasketPage.saveAndContinue() 
   })
 
   it('Fizicko lice - Products - Search - 1 matching', () => { 
     
-    const searchProductCriteria = 'HP 15s-eq2390nia' 
-    const searchProductName = 'HP 15s-eq2389nia (7H315EA/16) laptop 15.6" FHD AMD Ryzen 5 5500U 16GB 512GB SSD Radeon Graphics crni'
+    const searchProductCriteria = '8C9R3EA/16' 
+    const searchProductName = 'HP 15s-eq2170nm (8C9R3EA/16) laptop 15.6" FHD AMD Ryzen 5 5500U 16GB 512GB SSD Radeon Graphics beli'
     
     cy.visit(baseUrl)
     //cy.loginCtShopFl('F')

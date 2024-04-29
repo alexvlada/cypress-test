@@ -45,6 +45,15 @@ export class BasketPage {
             cy.wrap(amount).should('be.equal',0)
             cy.log('Current amount is '+amount)  
         })
+        
+    }
+
+    removeFromBasketNoValidation() {
+
+        cy.get('i[class="fa fa-times"]').click()
+        
+        cy.wait(1000)
+        
     }
 
 
