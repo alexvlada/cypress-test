@@ -52,6 +52,13 @@ public class CtShopTest extends BaseTest {
 
     String basketTitle = "Proizvod je dodat u korpu";
     String productName = "Lenovo Yoga 7 14ARP8 (82YM005HYA) 2u1 laptop 14\" 2.8K OLED touch AMD Ryzen 7 7735U 16GB 1TB SSD Radeon 680M Win11 Pro sivi";
+
+    String productName2u1 = "Lenovo Yoga 7 14ARP8 (82YM005DYA) 2u1 laptop 14\" WUXGA touch AMD Ryzen 5 7535U 16GB 512GB SSD Radeon Graphics Win11 sivi";
+
+    String productNameLegion = "Lenovo Legion 5 Pro 16ARX8 (82WM00D0RM) gejmerski laptop 16\" WQXGA AMD Ryzen 7 7745HX 32GB 1TB SSD GeForce RTX4060 sivi";
+
+    String productNameSporet = "Gorenje GEC5C61WG staklokeramički šporet";
+
     String emptyBasketMessageText = "Vaša korpa je trenutno prazna.";
 
     @Before
@@ -136,12 +143,12 @@ public class CtShopTest extends BaseTest {
         ctShopHomePage.mainMenuDropDownHover();
         ctShopHomePage.getCategoryHover("laptopoviTableti");
         ctShopHomePage.getSubCategoryClick("laptopRacunari");
-        ctShopHomePage.getProductGroupClick("laptopovi");
+        ctShopHomePage.getProductGroupClick("2-u-1laptopovi");
         laptopsPage.lenovoCheckboxClick();
-        laptopsPage.processorCheckboxClick();
-        laptopPage.laptopClick();
+        //laptopsPage.processorCheckboxClick();
+        laptopPage.laptopClick("2u1");
         assertTrue(laptopPage.productNameIsDisplayed());
-        assertEquals(productName,laptopPage.productNameGetText());
+        assertEquals(productName2u1,laptopPage.productNameGetText());
         assertTrue(laptopPage.oldPriceIsDisplayed());
         assertTrue(laptopPage.newPriceIsDisplayed());
         oldPrice = Double.parseDouble(laptopPage.oldPriceGetText());
@@ -172,14 +179,11 @@ public class CtShopTest extends BaseTest {
         ctShopHomePage.getProductGroupClick("laptopovi");
         laptopsPage.lenovoCheckboxClick();
         laptopsPage.processorCheckboxClick();
-        laptopPage.laptopClick();
-
+        laptopPage.laptopClick("legion");
         assertTrue(commonPage.basketNumberOfItemsIsDisplayed());
         assertEquals(0,Integer.parseInt(commonPage.basketNumberOfItemsGetText()));
-
         assertTrue(laptopPage.productNameIsDisplayed());
-        assertEquals(productName,laptopPage.productNameGetText());
-
+        assertEquals(productNameLegion,laptopPage.productNameGetText());
         laptopPage.addToBasketButtonClick();
         assertEquals(1,Integer.parseInt(commonPage.basketNumberOfItemsGetText()));
         assertTrue(addToBasketPopupPage.addToBasketPopupIsDisplayed());
@@ -190,7 +194,7 @@ public class CtShopTest extends BaseTest {
         assertTrue(basketPage.basketTitleIsDisplayed());
         assertEquals("Korpa",basketPage.basketTitleGetText());
         assertTrue(basketPage.productNameIsDisplayed());
-        assertEquals(productName.toUpperCase(),basketPage.productNameGetText());
+        assertEquals(productNameLegion.toUpperCase(),basketPage.productNameGetText(1));
         basketPage.confirmButtonClick();
         assertEquals("2. Naručivanje",basketPage.activeTabGetText());
         basketPage.backButtonClick();
@@ -214,12 +218,11 @@ public class CtShopTest extends BaseTest {
         ctShopHomePage.getProductGroupClick("laptopovi");
         laptopsPage.lenovoCheckboxClick();
         laptopsPage.processorCheckboxClick();
-        laptopPage.laptopClick();
-
+        laptopPage.laptopClick("legion");
         assertTrue(commonPage.basketNumberOfItemsIsDisplayed());
         assertEquals(0,Integer.parseInt(commonPage.basketNumberOfItemsGetText()));
         assertTrue(laptopPage.productNameIsDisplayed());
-        assertEquals(productName,laptopPage.productNameGetText());
+        assertEquals(productNameLegion,laptopPage.productNameGetText());
         laptopPage.addToBasketButtonClick();
         assertEquals(1,Integer.parseInt(commonPage.basketNumberOfItemsGetText()));
         assertTrue(addToBasketPopupPage.addToBasketPopupIsDisplayed());
@@ -247,12 +250,11 @@ public class CtShopTest extends BaseTest {
         ctShopHomePage.getProductGroupClick("laptopovi");
         laptopsPage.lenovoCheckboxClick();
         laptopsPage.processorCheckboxClick();
-        laptopPage.laptopClick();
-
+        laptopPage.laptopClick("legion");
         assertTrue(commonPage.basketNumberOfItemsIsDisplayed());
         assertEquals(0,Integer.parseInt(commonPage.basketNumberOfItemsGetText()));
         assertTrue(laptopPage.productNameIsDisplayed());
-        assertEquals(productName,laptopPage.productNameGetText());
+        assertEquals(productNameLegion,laptopPage.productNameGetText());
         laptopPage.addToBasketButtonClick();
         assertEquals(1,Integer.parseInt(commonPage.basketNumberOfItemsGetText()));
         assertTrue(addToBasketPopupPage.addToBasketPopupIsDisplayed());
@@ -321,7 +323,7 @@ public class CtShopTest extends BaseTest {
         ctShopHomePage.getProductGroupClick("laptopovi");
         laptopsPage.lenovoCheckboxClick();
         laptopsPage.processorCheckboxClick();
-        laptopPage.laptopClick();
+        laptopPage.laptopClick("legion");
         assertTrue(laptopPage.productNameIsDisplayed());
         assertTrue(commonPage.basketNumberOfItemsIsDisplayed());
         assertEquals(0,Integer.parseInt(commonPage.basketNumberOfItemsGetText()));
@@ -336,9 +338,32 @@ public class CtShopTest extends BaseTest {
         elektricniSporetiPage.staklokeramikaCheckboxClick();
         sporetPage.sporetClick();
         commonPage.addToBasketButtonClick();
-        addToBasketPopupPage.goToBasketButtonClick();
-        basketPage.confirmButtonClick();
         assertEquals(2,Integer.parseInt(commonPage.basketNumberOfItemsGetText()));
+        addToBasketPopupPage.goToBasketButtonClick();
+        assertTrue(basketPage.productNameIsDisplayed());
+        System.out.println("Position 1: "+basketPage.productNameGetText(1));
+        System.out.println("Position 2: "+basketPage.productNameGetText(2));
+        assertEquals(basketPage.productNameGetText(1),productNameLegion.toUpperCase());
+        assertEquals(basketPage.productNameGetText(2),productNameSporet.toUpperCase());
+        basketPage.confirmButtonClick();
+    }
+
+    @Test
+    public void _11_getHighRankingProduct() throws InterruptedException {
+        ctShopHomePage.prijaviSeButtonClick();
+        ctShopLoginPage.emailOrUserNameInputFieldSendKeys(CommonPage.GlobalVariables.username);
+        ctShopLoginPage.passwordInputFieldSendKeys(CommonPage.GlobalVariables.password);
+        ctShopLoginPage.rememberMeCheckBoxUnchecked();
+        ctShopLoginPage.sendButtonClick();
+        assertTrue(ctShopLoginPage.profileTitleIsDisplayed());
+        ctShopHomePage.mainMenuDropDownHover();
+        ctShopHomePage.getCategoryHover("laptopoviTableti");
+        ctShopHomePage.getSubCategoryClick("laptopRacunari");
+        ctShopHomePage.getProductGroupClick("laptopovi");
+        laptopsPage.lenovoCheckboxClick();
+        //laptopsPage.processorCheckboxClick();
+        Thread.sleep(3000);
+        laptopsPage.getHighRankingProduct();
     }
 
 }

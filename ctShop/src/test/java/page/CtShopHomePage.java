@@ -16,10 +16,10 @@ public class CtShopHomePage extends BaseTest {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(linkText = "Otvori nalog")
+    @FindBy(linkText = "Registaracija")
     WebElement otvoriNalogButton;
 
-    @FindBy(linkText = "Prijavi se")
+    @FindBy(linkText = "Prijava")
     WebElement prijaviSeButton;
 
     //@FindBy(className = "am-opener sharkskin-collapse")
@@ -29,7 +29,7 @@ public class CtShopHomePage extends BaseTest {
     @FindBy(linkText = "Laptopovi-Tableti")
     WebElement getCategory;
 
-    @FindBy(linkText = "Bela tehnika")
+    @FindBy(linkText = "Bela tehnika i klime")
     WebElement getCategoryBelaTehnika;
 
 
@@ -43,6 +43,9 @@ public class CtShopHomePage extends BaseTest {
     //@FindBy(linkText = "Laptopovi")
     @FindBy(css = "img[alt='Laptopovi']")
     WebElement getProductGroup;
+
+    @FindBy(css = "img[alt='2-u-1 laptopovi']")
+    WebElement getProductGroup1;
 
     @FindBy(css = "img[alt='Električni šporeti']")
     WebElement getProductGroupElektricniSporeti;
@@ -59,11 +62,15 @@ public class CtShopHomePage extends BaseTest {
 
 
     public void otvoriNalogButtonClick() {
-        wdWait.until(ExpectedConditions.elementToBeClickable(otvoriNalogButton)).click();
+        //wdWait.until(ExpectedConditions.elementToBeClickable(otvoriNalogButton)).click();
+        JavascriptExecutor executor = (JavascriptExecutor)driver;
+        executor.executeScript("arguments[0].click();", otvoriNalogButton);
     }
 
     public void prijaviSeButtonClick() {
-        wdWait.until(ExpectedConditions.elementToBeClickable(prijaviSeButton)).click();
+      //  wdWait.until(ExpectedConditions.elementToBeClickable(prijaviSeButton)).click();
+        JavascriptExecutor executor = (JavascriptExecutor)driver;
+        executor.executeScript("arguments[0].click();", prijaviSeButton);
     }
 
     public void mainMenuDropDownHover() {
@@ -114,6 +121,10 @@ public class CtShopHomePage extends BaseTest {
         if (productGroup == "laptopovi")
         {
             wdWait.until(ExpectedConditions.elementToBeClickable(getProductGroup)).click();
+        }
+        else if (productGroup == "2-u-1laptopovi")
+        {
+            wdWait.until(ExpectedConditions.elementToBeClickable(getProductGroup1)).click();;
         }
         else if (productGroup == "elektricniSporeti")
         {

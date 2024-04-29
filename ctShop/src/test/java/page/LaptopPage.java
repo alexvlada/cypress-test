@@ -17,6 +17,14 @@ public class LaptopPage extends BaseTest {
     @FindBy(css = "img[alt='Lenovo Yoga 7 14ARP8 (82YM005HYA) 2u1 laptop 14\" 2.8K OLED touch AMD Ryzen 7 7735U 16GB 1TB SSD Radeon 680M Win11 Pro sivi']")
     WebElement laptop;
 
+    @FindBy(css = "img[alt='Lenovo Yoga 7 14ARP8 (82YM005DYA) 2u1 laptop 14\" WUXGA touch AMD Ryzen 5 7535U 16GB 512GB SSD Radeon Graphics Win11 sivi']")
+    WebElement laptop2u1;
+
+    @FindBy(css = "img[alt='Lenovo Legion 5 Pro 16ARX8 (82WM00D0RM) gejmerski laptop 16\" WQXGA AMD Ryzen 7 7745HX 32GB 1TB SSD GeForce RTX4060 sivi']")
+    WebElement laptopLegion;
+
+    //
+
     @FindBy(css = "div[class='product-name'] h1")
     WebElement productName;
 
@@ -35,9 +43,23 @@ public class LaptopPage extends BaseTest {
     @FindBy(id = "product-addtocart-button")
     WebElement addToBasketButton;
 
-    public void laptopClick() {
-        wdWait.until(ExpectedConditions.elementToBeClickable(laptop));
-        laptop.click();
+    public void laptopClick(String category) {
+        if (category == "2u1")
+            {
+                wdWait.until(ExpectedConditions.elementToBeClickable(laptop2u1));
+                laptop2u1.click();
+            }
+        else if (category == "legion")
+            {
+                wdWait.until(ExpectedConditions.elementToBeClickable(laptopLegion));
+                laptopLegion.click();
+            }
+        else
+            {
+                wdWait.until(ExpectedConditions.elementToBeClickable(laptop));
+                laptop.click();
+            }
+
     }
 
     public boolean productNameIsDisplayed() {

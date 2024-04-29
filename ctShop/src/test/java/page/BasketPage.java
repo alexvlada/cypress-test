@@ -27,8 +27,12 @@ public class BasketPage extends BaseTest {
     @FindBy(xpath = "//b[text() = 'Korpa']")
     WebElement basketTitle;
 
-    @FindBy(css = "a[class='name-of-product']")
+    //@FindBy(css = "a[class='name-of-product']")
+    @FindBy(xpath = "(//a[@class=\"name-of-product\"])[1]")
     WebElement productName;
+
+    @FindBy(xpath = "(//a[@class=\"name-of-product\"])[2]")
+    WebElement productName2;
 
     @FindBy(xpath = "//button[text() = 'Sačuvaj i nastavi']")
     WebElement confirmButton;
@@ -76,9 +80,20 @@ public class BasketPage extends BaseTest {
         return productName.isDisplayed();
     }
 
-    public String productNameGetText() {
-        wdWait.until(ExpectedConditions.visibilityOf(productName));
-        return productName.getText();
+    public String productNameGetText(int positionNumber) {
+        WebElement productNamePositionNumbmer;
+
+        if (positionNumber == 1)
+          {
+            productNamePositionNumbmer = productName;
+          }
+        else
+          {
+            productNamePositionNumbmer = productName2;
+          }
+
+        wdWait.until(ExpectedConditions.visibilityOf(productNamePositionNumbmer));
+        return productNamePositionNumbmer.getText();
     }
 
     public void confirmButtonClick() {
