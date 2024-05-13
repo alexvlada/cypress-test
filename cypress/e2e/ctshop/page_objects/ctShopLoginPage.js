@@ -7,11 +7,11 @@ export class CtShopLoginPage {
     }
 
     getPassword() {
-        return cy.get('#pass')  
+        return cy.get('#password-login')  
     }
 
     getConfirmButton() {
-        return cy.get('#send2')  
+        return cy.get('i[class="fa fa-sign-in"]')
     }
     
     loginToAccount(username,password) 
@@ -29,15 +29,16 @@ export class CtShopLoginPage {
 
     getSuccessfulLogin(flPl) {
         
-        cy.contains('Moj Panel').should('be.visible')
+        cy.get('div[class="page-title"]').should('be.visible')
+        cy.contains('Moj nalog').should('be.visible')
 
         if (flPl == 'F') 
             {
-                cy.contains('Dobrodošli, Fizicko Lice!').should('be.visible')
+                cy.get('p[class="hello"]').should('be.visible').contains('Dobrodošli, Fizicko Lice!')
             }
         else 
             {
-                cy.contains('Dobrodošli, Pravno Lice!').should('be.visible')
+                cy.get('p[class="hello"]').should('be.visible').contains('Dobrodošli, Pravno Lice!')
             } 
     }
 
