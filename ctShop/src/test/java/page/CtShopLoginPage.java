@@ -17,10 +17,10 @@ public class CtShopLoginPage extends BaseTest {
     @FindBy(id = "email")
     WebElement emailInputField;
 
-    @FindBy(id = "pass")
+    @FindBy(id = "password-login")
     WebElement passwordInputField;
 
-    @FindBy(css = "button[class='btn btn-primary btn-continue pull-right']")
+    @FindBy(css = "i[class='fa fa-sign-in']")
     WebElement sendButton;
 
     @FindBy(id = "remember_mevN22iqxPF7")
@@ -38,7 +38,8 @@ public class CtShopLoginPage extends BaseTest {
 
 
     //@FindBy(xpath = "//div[@class=\"box-content\"]//p[contains(text(), \"Fizicko Lice\")]")
-    @FindBy(css = "div[class='box-content']")
+    //@FindBy(css = "div[class='box-content']")
+    @FindBy(css = "p[class='hello']")
     WebElement contactInformation;
 
     @FindBy(css = "div[class='alert alert-danger']")

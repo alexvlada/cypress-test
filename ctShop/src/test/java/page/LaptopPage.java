@@ -20,7 +20,9 @@ public class LaptopPage extends BaseTest {
     @FindBy(css = "img[alt='Lenovo Yoga 7 14ARP8 (82YM005DYA) 2u1 laptop 14\" WUXGA touch AMD Ryzen 5 7535U 16GB 512GB SSD Radeon Graphics Win11 sivi']")
     WebElement laptop2u1;
 
-    @FindBy(css = "img[alt='Lenovo Legion 5 Pro 16ARX8 (82WM00D0RM) gejmerski laptop 16\" WQXGA AMD Ryzen 7 7745HX 32GB 1TB SSD GeForce RTX4060 sivi']")
+    //@FindBy(css = "img[alt='Lenovo Legion 5 Pro 16ARX8 (82WM00D0RM) gejmerski laptop 16\" WQXGA AMD Ryzen 7 7745HX 32GB 1TB SSD GeForce RTX4060 sivi']")
+    @FindBy(css = "img[alt='Asus Zenbook 14 UM3402YAR-KP521W laptop 14\" WQXGA AMD Ryzen 5 7530U 16GB 1TB SSD Radeon Graphics Win11 crni']")
+
     WebElement laptopLegion;
 
     //
@@ -28,10 +30,12 @@ public class LaptopPage extends BaseTest {
     @FindBy(css = "div[class='product-name'] h1")
     WebElement productName;
 
-    @FindBy(css = "span[class=' strikethrough  old-online-price']")
+    //@FindBy(css = "span[class=' strikethrough  old-online-price']")
+    @FindBy(css = "span[class='price-after-discount']")
     WebElement oldPrice;
 
-    @FindBy(css = "span[class='price new-online-price']")
+    //@FindBy(css = "span[class='price new-online-price']")
+    @FindBy(css = "span[class='new-price']")
     WebElement newPrice;
 
     @FindBy(xpath = "//a[contains(text(), 'Ocene')]")

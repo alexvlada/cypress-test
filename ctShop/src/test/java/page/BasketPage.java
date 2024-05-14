@@ -37,7 +37,7 @@ public class BasketPage extends BaseTest {
     @FindBy(xpath = "//button[text() = 'Sačuvaj i nastavi']")
     WebElement confirmButton;
 
-    @FindBy(xpath = "//a[text() = 'Nazad']")
+    @FindBy(xpath = "//a[text() = 'Nazad u korpu']")
     WebElement backButton;
 
     @FindBy(css = "i[class='fa fa-times']")

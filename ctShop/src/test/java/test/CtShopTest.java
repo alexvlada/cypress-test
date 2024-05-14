@@ -24,6 +24,7 @@ public class CtShopTest extends BaseTest {
     MailinatorHomePage mailinatorHomePage;
     MailinatorInboxPage mailinatorInboxPage;
     MailinatorCtShopEmailPage mailinatorCtShopEmailPage;
+    MyProfilePage myProfilePage;
     LaptopsPage laptopsPage;
     LaptopPage laptopPage;
     AddToBasketPopupPage addToBasketPopupPage;
@@ -46,7 +47,7 @@ public class CtShopTest extends BaseTest {
     String successfulRegistrationMessageText = "Hvala na registraciji. Molimo proverite email i aktivirajte Vaš nalog.";
     String successfulActivationMessageText = "Uspešno ste aktivirali Vaš nalog. Možete se ulogovati na sistem.";
 
-    String userProfileContactInformation = "Fizicko Lice\nE: "+username+"@mailinator.com\nT:\n\nPromeni Lozinku";
+    String userProfileContactInformation = "Dobrodošli, Fizicko Lice!";//"Fizicko Lice\nE: "+username+"@mailinator.com\nT:\n\nPromeni Lozinku";
 
     String dangerAlertMessageText = "Uneta email adresa i lozinka se ne poklapaju.";
 
@@ -55,7 +56,7 @@ public class CtShopTest extends BaseTest {
 
     String productName2u1 = "Lenovo Yoga 7 14ARP8 (82YM005DYA) 2u1 laptop 14\" WUXGA touch AMD Ryzen 5 7535U 16GB 512GB SSD Radeon Graphics Win11 sivi";
 
-    String productNameLegion = "Lenovo Legion 5 Pro 16ARX8 (82WM00D0RM) gejmerski laptop 16\" WQXGA AMD Ryzen 7 7745HX 32GB 1TB SSD GeForce RTX4060 sivi";
+    String productNameLegion = "Asus Zenbook 14 UM3402YAR-KP521W laptop 14\" WQXGA AMD Ryzen 5 7530U 16GB 1TB SSD Radeon Graphics Win11 crni";
 
     String productNameSporet = "Gorenje GEC5C61WG staklokeramički šporet";
 
@@ -69,6 +70,7 @@ public class CtShopTest extends BaseTest {
         mailinatorHomePage = new MailinatorHomePage();
         mailinatorInboxPage = new MailinatorInboxPage();
         mailinatorCtShopEmailPage = new MailinatorCtShopEmailPage();
+        myProfilePage = new MyProfilePage();
         laptopsPage = new LaptopsPage();
         laptopPage = new LaptopPage();
         addToBasketPopupPage = new AddToBasketPopupPage();
@@ -107,10 +109,16 @@ public class CtShopTest extends BaseTest {
         ctShopLoginPage.passwordInputFieldSendKeys(password);
         ctShopLoginPage.rememberMeCheckBoxUnchecked();
         ctShopLoginPage.sendButtonClick();
-        assertTrue(ctShopLoginPage.profileTitleIsDisplayed());
-        assertEquals("Moj Panel", ctShopLoginPage.profileTitleGetText());
-        assertTrue(ctShopLoginPage.contactInformationIsDisplayed());
-        assertEquals(userProfileContactInformation, ctShopLoginPage.contactInformationGetText());
+        assertTrue(myProfilePage.profileTitleIsDisplayed());
+        assertEquals("Moj nalog", myProfilePage.profileTitleGetText());
+        assertTrue(myProfilePage.contactInformationIsDisplayed());
+        assertEquals(userProfileContactInformation, myProfilePage.contactInformationGetText());
+        assertTrue(firstName, myProfilePage.firstnameIsDisplayed());
+        assertEquals(firstName, myProfilePage.firstnameGetValue());
+        assertTrue(lastName, myProfilePage.lastnameIsDisplayed());
+        assertEquals(lastName, myProfilePage.lastnameGetValue());
+        assertTrue(emailAddress, myProfilePage.emailIsDisplayed());
+        assertEquals(emailAddress, myProfilePage.emailGetValue());
         System.out.println(emailAddress);
         System.out.println(password);
         CommonPage.GlobalVariables.username = emailAddress;
