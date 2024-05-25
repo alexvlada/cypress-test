@@ -94,6 +94,10 @@ export class BasketPage {
         cy.get('div[class="clearfix"]').should('contain','Korpa')
     }
 
+    backToBasket() {
+        cy.get('a[class="btn btn-default purchase-confirmation"]').click()
+    }
+
     getProductName(rowNumber) {
 
         if (rowNumber == null) 

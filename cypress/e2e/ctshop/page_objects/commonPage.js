@@ -8,7 +8,9 @@ const checkboxEl = "[type='checkbox']";
 const laptopTabletMainMenu = 'laptopovi-tableti';
 const laptopRacunariSubMenu = 'a[href*="laptop-racunari"]';
 const laptopovi = 'a[href*="laptopovi"]';
-const laptopName = 'Lenovo Legion 5 Pro 16ARX8 (82WM00D0RM) gejmerski laptop 16" WQXGA AMD Ryzen 7 7745HX 32GB 1TB SSD GeForce RTX4060 sivi';
+//const laptopName = 'Lenovo Legion 5 Pro 16ARX8 (82WM00D0RM) gejmerski laptop 16" WQXGA AMD Ryzen 7 7745HX 32GB 1TB SSD GeForce RTX4060 sivi';
+const laptopName = 'Asus VivoBook 15 M1502YA-BQ161 laptop 15.6" FHD AMD Ryzen 7 7730U 16GB 512GB SSD Radeon Graphics srebrni'
+
 
 const sporeti = 'a[href*="sporeti"]';
 const elektricniSporeti = 'a[href*="elektricni-sporeti"]';

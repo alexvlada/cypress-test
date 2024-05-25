@@ -51,19 +51,25 @@ export class ProductPage {
 
         cy.get(productDetails).eq(0).then($input => {
             this.getProductDetails().eq(0).should('contain','Tip proizvoda')
+            
             let val = $input.text();
             let val1 = $input.val('attr', 'title');
-
+            
             cy.get('.features').then(($features) => {
               // $features is the jQuery object representing elements with the class "features"
               const hasText = $features.find('[title="Laptop računari"]').length > 0;
+              const hasText1 = $features.find('[title="Preklopnik"]').length > 0;
         
               // Use the variable hasText as needed. This does not assert, just checks presence.
               if (hasText) 
                   {
                     // If needed, you can perform actions here or log to the console
-                    this.getProductDetails().eq(0).should('contain','Laptop računari')
+                    this.getProductDetails().should('contain','Laptop računari')
                   } 
+              else if (hasText1)
+                  {
+                    this.getProductDetails().should('contain','Preklopnik')
+                  }    
               else 
                   {
                     this.getProductDetails().eq(0).should('contain','Hibridni (2-u-1)')

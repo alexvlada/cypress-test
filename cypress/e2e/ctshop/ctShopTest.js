@@ -183,7 +183,6 @@ context('CT shop - test suit', () => {
     onProductPage.getPriceComparationStatus()
     onProductPage.checkProductDetails()
     onProductPage.getRaitingStatus()
-    
   })
 
   it('Fizicko lice - Products - Add to and remove from basket', () => { 
@@ -197,9 +196,9 @@ context('CT shop - test suit', () => {
     onCommonPage.getCurrentAmount(1)
     //onCommonPage.getBusketButton().eq(1).click()
     onBasketPage.saveAndContinue()
+    onBasketPage.backToBasket()
     onBasketPage.removeFromBasketNoValidation()
     onCommonPage.getCurrentAmount(0)
-
   })
 
   it('Fizicko lice - Products - Add to basket and increase / decrease amount by arrows', () => { 
@@ -252,13 +251,13 @@ context('CT shop - test suit', () => {
   })
 
   it('Fizicko lice - Products - Search - Multiply matching', () => { 
-    const searchProductCriteria = 'Gorenje GEC5C61WG staklokeramički šporet' 
+    const searchProductCriteria = 'Elektrolux LK' 
     const searchProductName = '' 
 
     cy.visit(baseUrl)
     //cy.loginCtShopFl('F')
     onCtShopLoginPage.loginToAccount(eMailAddressMailinator,password)
-    onCommonPage.searchProduct(searchProductCriteria, searchProductName, 3)
+    onCommonPage.searchProduct(searchProductCriteria, searchProductName, 10)
   })
 
   it('Fizicko lice - Products - Search - No matching', () => { 
