@@ -54,7 +54,7 @@ public class CtShopTest extends BaseTest {
     String basketTitle = "Proizvod je dodat u korpu";
     String productName = "Lenovo Yoga 7 14ARP8 (82YM005HYA) 2u1 laptop 14\" 2.8K OLED touch AMD Ryzen 7 7735U 16GB 1TB SSD Radeon 680M Win11 Pro sivi";
 
-    String productName2u1 = "Lenovo Yoga 7 14ARP8 (82YM005DYA) 2u1 laptop 14\" WUXGA touch AMD Ryzen 5 7535U 16GB 512GB SSD Radeon Graphics Win11 sivi";
+    String productName2u1 = "Lenovo IdeaPad Flex 5 14ABR8 (82XX00B7YA) 2u1 laptop 14\" WUXGA touch AMD Ryzen 7 7730U 16GB 512GB SSD Radeon Graphics Win11 sivi";
 
     String productNameLegion = "Asus Zenbook 14 UM3402YAR-KP521W laptop 14\" WQXGA AMD Ryzen 5 7530U 16GB 1TB SSD Radeon Graphics Win11 crni";
 
@@ -276,7 +276,7 @@ public class CtShopTest extends BaseTest {
 
     @Test
     public void _07_productSearchOneMatchingResult() throws InterruptedException {
-        String searchCriteria = "8C9R4EA/WIN11";
+        String searchCriteria = "82WM008JYA";
         ctShopHomePage.prijaviSeButtonClick();
         ctShopLoginPage.emailOrUserNameInputFieldSendKeys(CommonPage.GlobalVariables.username);
         ctShopLoginPage.passwordInputFieldSendKeys(CommonPage.GlobalVariables.password);
