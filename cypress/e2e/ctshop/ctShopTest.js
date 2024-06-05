@@ -241,8 +241,8 @@ context('CT shop - test suit', () => {
 
   it('Fizicko lice - Products - Search - 1 matching', () => { 
     
-    const searchProductCriteria = '8C9R3EA/16' 
-    const searchProductName = 'HP 15s-eq2170nm (8C9R3EA/16) laptop 15.6" FHD AMD Ryzen 5 5500U 16GB 512GB SSD Radeon Graphics beli'
+    const searchProductCriteria = 'HP 15s-eq2390nia (8C9R4EA/WIN11)' 
+    const searchProductName = 'HP 15s-eq2390nia (8C9R4EA/WIN11) laptop 15.6" FHD AMD Ryzen 7 5700U 16GB 512GB SSD Radeon Graphics Win11 srebrni'
     
     cy.visit(baseUrl)
     //cy.loginCtShopFl('F')
@@ -257,7 +257,7 @@ context('CT shop - test suit', () => {
     cy.visit(baseUrl)
     //cy.loginCtShopFl('F')
     onCtShopLoginPage.loginToAccount(eMailAddressMailinator,password)
-    onCommonPage.searchProduct(searchProductCriteria, searchProductName, 10)
+    onCommonPage.searchProduct(searchProductCriteria, searchProductName, 9)
   })
 
   it('Fizicko lice - Products - Search - No matching', () => { 
