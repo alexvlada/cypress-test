@@ -276,7 +276,7 @@ public class CtShopTest extends BaseTest {
 
     @Test
     public void _07_productSearchOneMatchingResult() throws InterruptedException {
-        String searchCriteria = "82WM008JYA";
+        String searchCriteria = "HP 15s-eq2390nia (8C9R4EA/WIN11) laptop 15.6\" FHD AMD Ryzen 7 5700U 16GB 512GB SSD Radeon Graphics Win11 srebrni";
         ctShopHomePage.prijaviSeButtonClick();
         ctShopLoginPage.emailOrUserNameInputFieldSendKeys(CommonPage.GlobalVariables.username);
         ctShopLoginPage.passwordInputFieldSendKeys(CommonPage.GlobalVariables.password);
